@@ -286,4 +286,10 @@ async def list_all_categories() -> list[str]:
 
 # Start the server
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    port = int(os.environ.get("PORT", 8000))
+
+    mcp.run(
+        transport="sse",
+        host="0.0.0.0",
+        port=port
+    )
